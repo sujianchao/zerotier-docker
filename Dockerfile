@@ -16,7 +16,8 @@ LABEL description="ZeroTier One Docker-only Linux hosts"
 
 EXPOSE 9993/udp
 
-COPY --from=builder /src/zerotier-one /usr/sbin/
+COPY  /src/zerotier-one /usr/sbin/
+RUN rm -rf  /src
 RUN mkdir -p /var/lib/zerotier-one \
   && ln -s /usr/sbin/zerotier-one /usr/sbin/zerotier-idtool \
   && ln -s /usr/sbin/zerotier-one /usr/sbin/zerotier-cli
