@@ -12,7 +12,7 @@ RUN apk add --upgrade --no-cache \
     && cd /src \
     && make -f make-linux.mk
 
-RUN cp  zerotier-one /usr/sbin/
+RUN cp  /src/zerotier-one /usr/sbin/
 RUN rm -rf  /src
 RUN mkdir -p /var/lib/zerotier-one \
   && ln -s /usr/sbin/zerotier-one /usr/sbin/zerotier-idtool \
