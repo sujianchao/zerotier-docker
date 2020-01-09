@@ -16,7 +16,7 @@ LABEL description="ZeroTier One Docker-only Linux hosts"
 RUN apk add --upgrade --no-cache \
               libgcc \
               libc6-compat \
-              libstdc++  \
+              libstdc++
               
 COPY --from=builder /src/zerotier-one /usr/sbin/
 RUN mkdir -p /var/lib/zerotier-one \
