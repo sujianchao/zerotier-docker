@@ -12,11 +12,7 @@ RUN apk add --upgrade --no-cache \
     && cd /src \
     && make -f make-linux.mk
 
-LABEL description="ZeroTier One Docker-only Linux hosts"
-
-EXPOSE 9993/udp
-
-COPY  /src/zerotier-one /usr/sbin/
+RUN cp  zerotier-one /usr/sbin/
 RUN rm -rf  /src
 RUN mkdir -p /var/lib/zerotier-one \
   && ln -s /usr/sbin/zerotier-one /usr/sbin/zerotier-idtool \
@@ -24,5 +20,7 @@ RUN mkdir -p /var/lib/zerotier-one \
 
 COPY main.sh /main.sh
 RUN chmod 0755 /main.sh
+
+EXPOSE 9993/udp
 ENTRYPOINT ["/main.sh"]
 CMD ["zerotier-one"]
